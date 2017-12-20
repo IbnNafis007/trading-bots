@@ -1,6 +1,6 @@
 Trading Bots
 ==============
-![](https://github.com/anthony-albertina/trading-bots/blob/master/images/intro.gif)
+<p align="center"><img width="460" height="300" src="https://github.com/anthony-albertina/trading-bots/blob/master/images/intro.gif"></p>
 =============================================================================
 This project is intended to create bots that utilize exchange APIs and web scrapers to 
 implement fundamental economics trading methods in the true DRY OOP style. The exchanges 
@@ -9,7 +9,3 @@ accessors and mutators, using encapsulation, inheritance, and overriding. In the
 directory, there are programs that use the classes to implement their respective algorithm!
 For further information about each individual trading method, including set up and the
 algorithm behind it, click on the trading-methods directory and read the secondary README.
-=================================
-<p align="center">
-  <img width="460" height="300" src="https://github.com/anthony-albertina/trading-bots/blob/master/images/small.gif">
-</p>
