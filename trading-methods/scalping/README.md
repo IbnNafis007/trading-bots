@@ -1,4 +1,0 @@
-# Trading Bots
-
-## Under development
-
