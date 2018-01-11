@@ -12,6 +12,36 @@ class Cryptopia(Exchange):
         self.__apikey = cryptopia['apikey']
         self.__apisecret = cryptopia['apisecret']
 
+    # Public API
+    def getCurrencies(self):
+        response = requests.get('https://www.cryptopia.co.nz/api/GetCurrencies')
+        return (response.json())
+
+    def getTradePairs(self):
+        response = requests.get('https://www.cryptopia.co.nz/api/GetTradePairs')
+        return (response.json())
+
+    def getMarkets(self, market=0):
+        if market == 0:
+            response = requests.get('https://www.cryptopia.co.nz/api/GetMarkets')
+        else:
+            response = requests.get('https://www.cryptopia.co.nz/api/GetMarkets/' + market)
+        return (response.json())
+
+    def getMarket(self, market):
+        response = requests.get('https://www.cryptopia.co.nz/api/GetMarket/' + market)
+        return (response.json())
+
+    def getMarketHistory(self, market):
+        response = requests.get('https://www.cryptopia.co.nz/api/GetMarketHistory/' + market)
+        return (response.json())
+
+    def getMarketOrders(self):
+        pass
+
+    def getMarketOrderGropus(self):
+        pass
+
     # Private API
     def getBalance(self):
         pass
@@ -42,39 +72,3 @@ class Cryptopia(Exchange):
 
     def submitTransfer(self):
         pass
-
-    # Public API
-    def getCurrencies(self):
-        response = requests.get('https://www.cryptopia.co.nz/api/GetCurrencies')
-        return(response.json())
-
-    def getTradePairs(self):
-        response = requests.get('https://www.cryptopia.co.nz/api/GetTradePairs')
-        return(response.json())
-
-    def getMarkets(self, market=0):
-        if market == 0:
-            response = requests.get('https://www.cryptopia.co.nz/api/GetMarkets')
-        else:
-            response = requests.get('https://www.cryptopia.co.nz/api/GetMarkets/'+market)
-        return(response.json())
-
-    def getMarket(self, market):
-        response = requests.get('https://www.cryptopia.co.nz/api/GetMarket/'+market)
-        return(response.json())
-
-    def getMarketHistory(self, market):
-        response = requests.get('https://www.cryptopia.co.nz/api/GetMarketHistory/'+market)
-        return(response.json())
-
-    def getMarketOrders(self):
-        pass
-
-    def getMarketOrderGropus(self):
-        pass
-
-    
-
-
-
-
