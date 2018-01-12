@@ -14,7 +14,7 @@ class Coinexchange(Exchange):
 
     # Public API
     def getMarkets(self):
-        "This endpoint retrieves all markets."
+        """This endpoint retrieves all markets."""
         response = requests.get('https://www.coinexchange.io/api/v1/getmarkets')
         return (response.json())
 
