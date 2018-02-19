@@ -35,8 +35,8 @@ coinone = {
     'apisecret':'0101'
 }
 cryptopia = {
-    'apikey':'1010',
-    'apisecret':'0101'
+    'apikey':'b2b0003d844b4b2f9b119ee6f106404f',
+    'apisecret':'tMzm4eWEsNIMoFhD0YnMO72jJksoMu7G8sk/V+V4Pr4='
 }
 etherdelta = {
     'apikey':'1010',
