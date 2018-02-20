@@ -1,3 +1,5 @@
+# This should be renamed to env.py
+
 binance = {
     'apikey':'1010',
     'apisecret':'0101'
