@@ -3,11 +3,11 @@
 import sys
 sys.path.append('../../') # To keep file structure
 
-from exchanges.coinexchange import Coinexchange
+from exchanges.cryptopia import Cryptopia
 
 def main():
-    exchange1 = Coinexchange()
-    print(exchange1.getMarkets.__doc__)
+    exchange1 = Cryptopia()
+    print(exchange1.getCurrencies())
     #result = exchange1.getMarkets()
     #print(result)
     #result = exchange1.getMarket('LTC_BTC')

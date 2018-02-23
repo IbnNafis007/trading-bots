@@ -3,33 +3,35 @@
 from exchanges.exchange import Exchange
 from env import cryptopia
 
+import sys
 import requests
-import time
 
 class Cryptopia(Exchange):
 
     __apikey = ""
     __apisecret = ""
+    __reqlimit = None
 
     def __init__(self):
         self.__apikey = cryptopia['apikey']
         self.__apisecret = cryptopia['apisecret']
+        self.__requestlimit = 1440000 #1000/minute
 
     # Public API
     def getCurrencies(self):
         """Returns all currency data."""
         response = requests.get('https://www.cryptopia.co.nz/api/GetCurrencies')
-        return (response.json())
+        return self.checkResponse(response.json())
 
     def getTradePairs(self):
         """Returns all trade pair data."""
         response = requests.get('https://www.cryptopia.co.nz/api/GetTradePairs')
-        return (response.json())
+        return self.checkResponse(response.json())
 
     def getMarkets(self, market=''):
         """Returns all market data."""
         response = requests.get('https://www.cryptopia.co.nz/api/GetMarkets/' + market)
-        return (response.json())
+        return self.checkResponse(response.json())
 
     def getMarket(self, market):
         """Returns market data for the specified trade pair."""
@@ -80,4 +82,13 @@ class Cryptopia(Exchange):
         pass
 
     def submitTransfer(self):
+        pass
+
+    # Helper Methods
+    def checkResponse(self, response):
+        if response['Success'] == True:
+            return response
+        sys.exit()
+
+    def logRequest(self):
         pass
