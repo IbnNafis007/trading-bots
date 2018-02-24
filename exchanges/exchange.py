@@ -1,2 +1,9 @@
+#/usr/bin/env python
+
 class Exchange:
-	pass
+
+    def __init__(self):
+        pass
+
+    def logRequest(self, exchange):
+        pass

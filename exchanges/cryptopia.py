@@ -10,17 +10,18 @@ class Cryptopia(Exchange):
 
     __apikey = ""
     __apisecret = ""
-    __reqlimit = None
+    __exchange = 'cryptopia'
+    __requestlimit = 1440000 #1000/minute
 
     def __init__(self):
         self.__apikey = cryptopia['apikey']
         self.__apisecret = cryptopia['apisecret']
-        self.__requestlimit = 1440000 #1000/minute
 
     # Public API
     def getCurrencies(self):
         """Returns all currency data."""
         response = requests.get('https://www.cryptopia.co.nz/api/GetCurrencies')
+        self.logRequest(self.__exchange)
         return self.checkResponse(response.json())
 
     def getTradePairs(self):
@@ -89,6 +90,3 @@ class Cryptopia(Exchange):
         if response['Success'] == True:
             return response
         sys.exit()
-
-    def logRequest(self):
-        pass

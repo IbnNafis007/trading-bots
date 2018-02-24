@@ -1,1 +1,5 @@
 env.py
+*__pycache__*
+*.idea*
+request-log.csv
+response-log.csv
