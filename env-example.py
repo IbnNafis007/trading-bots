@@ -9,7 +9,7 @@ bitfinex = {
     'apisecret':'0101'
 }
 bithumb = {
-    'apikey':'1010',
+    'apikey':'5010',
     'apisecret':'0101'
 }
 bitstamp = {
