@@ -1,5 +1,7 @@
 env.py
 *__pycache__*
 *.idea*
-request-log.csv
-response-log.csv
+*cpython-36.pyc*
+*request-log.*
+*response-log.*
+*exception-log.*

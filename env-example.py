@@ -1,86 +1,128 @@
 # This should be renamed to env.py
 
 binance = {
-    'apikey':'1010',
-    'apisecret':'0101'
+    'apikey':'',
+    'apisecret':'',
+    'base_url':'',
+    'hourly_request_limit':0
 }
 bitfinex = {
-    'apikey':'1010',
-    'apisecret':'0101'
+    'apikey':'',
+    'apisecret':'',
+    'base_url':'',
+    'hourly_request_limit':0
 }
 bithumb = {
-    'apikey':'1010',
-    'apisecret':'0101'
+    'apikey':'',
+    'apisecret':'',
+    'base_url':'',
+    'hourly_request_limit':0
 }
 bitstamp = {
-    'apikey':'1010',
-    'apisecret':'0101'
+    'apikey':'',
+    'apisecret':'',
+    'base_url':'',
+    'hourly_request_limit':0
 }
 bittrex = {
-    'apikey':'1010',
-    'apisecret':'0101'
+    'apikey':'',
+    'apisecret':'',
+    'base_url':'',
+    'hourly_request_limit':0
 }
 coinbase = {
-    'apikey':'1010',
-    'apisecret':'0101'
+    'apikey':'',
+    'apisecret':'',
+    'base_url':'',
+    'hourly_request_limit':0
 }
 coinexchange = {
-    'apikey':'1010',
-    'apisecret':'0101'
+    'apikey':'',
+    'apisecret':'',
+    'base_url':'',
+    'hourly_request_limit':0
 }
 coinmarkets = {
-    'apikey':'1010',
-    'apisecret':'0101'
+    'apikey':'',
+    'apisecret':'',
+    'base_url':'',
+    'hourly_request_limit':0
 }
 coinone = {
-    'apikey':'1010',
-    'apisecret':'0101'
+    'apikey':'',
+    'apisecret':'',
+    'base_url':'',
+    'hourly_request_limit':0
 }
 cryptopia = {
-    'apikey':'1010',
-    'apisecret':'0101'
+    'apikey':'',
+    'apisecret':'',
+    'base_url':'',
+    'hourly_request_limit':0
 }
 etherdelta = {
-    'apikey':'1010',
-    'apisecret':'0101'
+    'apikey':'',
+    'apisecret':'',
+    'base_url':'',
+    'hourly_request_limit':0
 }
 ethfinex = {
-    'apikey':'1010',
-    'apisecret':'0101'
+    'apikey':'',
+    'apisecret':'',
+    'base_url':'',
+    'hourly_request_limit':0
 }
 gdax = {
-    'apikey':'1010',
-    'apisecret':'0101'
+    'apikey':'',
+    'apisecret':'',
+    'base_url':'',
+    'hourly_request_limit':0
 }
 gemini = {
-    'apikey':'1010',
-    'apisecret':'0101'
+    'apikey':'',
+    'apisecret':'',
+    'base_url':'',
+    'hourly_request_limit':0
 }
 hitbtc = {
-    'apikey':'1010',
-    'apisecret':'0101'
+    'apikey':'',
+    'apisecret':'',
+    'base_url':'',
+    'hourly_request_limit':0
 }
 huobi = {
-    'apikey':'1010',
-    'apisecret':'0101'
+    'apikey':'',
+    'apisecret':'',
+    'base_url':'',
+    'hourly_request_limit':0
 }
 kraken = {
-    'apikey':'1010',
-    'apisecret':'0101'
+    'apikey':'',
+    'apisecret':'',
+    'base_url':'',
+    'hourly_request_limit':0
 }
 livecoin = {
-    'apikey':'1010',
-    'apisecret':'0101'
+    'apikey':'',
+    'apisecret':'',
+    'base_url':'',
+    'hourly_request_limit':0
 }
 okex = {
-    'apikey':'1010',
-    'apisecret':'0101'
+    'apikey':'',
+    'apisecret':'',
+    'base_url':'',
+    'hourly_request_limit':0
 }
 poloniex = {
-    'apikey':'1010',
-    'apisecret':'0101'
+    'apikey':'',
+    'apisecret':'',
+    'base_url':'',
+    'hourly_request_limit':0
 }
 yobit = {
-    'apikey':'1010',
-    'apisecret':'0101'
+    'apikey':'',
+    'apisecret':'',
+    'base_url':'',
+    'hourly_request_limit':0
 }

@@ -1,20 +1,14 @@
 #/usr/bin/env python
 
 import sys
+
 sys.path.append('../../') # To keep file structure
 
 from exchanges.cryptopia import Cryptopia
 
 def main():
     exchange1 = Cryptopia()
-    print(exchange1.getCurrencies())
-    #result = exchange1.getMarkets()
-    #print(result)
-    #result = exchange1.getMarket('LTC_BTC')
-    #print(result['Data'][0]['TradePairId'])
-    #print(len(result['Data']))
-    #print(result['Data'][497]['TradePairId'])
-    #print(result)
-    #for n in range(len(result['Data'])):
-    #    print(result['Data'][n]['TradePairId'])
+
+    print(exchange1.getMarkets.__doc__)
+
 main()

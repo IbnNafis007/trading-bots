@@ -1,15 +1,45 @@
+#/usr/bin/env python
+
+import os
 import sys
+import json
+import time
+
 sys.path.append('../../') # To keep file structure
 
 from exchanges.cryptopia import Cryptopia
 
 def main():
-    exchange1 = Cryptopia()
-    #result = exchange1.getMarket('LTC_BTC')
-    #print(result['Data'][0]['TradePairId'])
-    #print(len(result['Data']))
-    #print(result['Data'][497]['TradePairId'])
-    #print(result)
-    #for n in range(len(result['Data'])):
-    #    print(result['Data'][n]['TradePairId'])
+    #print(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    #print(sys.path)
+    cryptopia = Cryptopia()
+    #print(cryptopia.getCurrencies())
+
+    #start = time.time()
+    #prices = dict()
+
+
+    print(cryptopia.getBalance())
+
+    #post is
+
+'''
+    for i in range(len(prices)):
+                                ''
+        #Check if price is 1 or 2 sats
+        if .00000001 <= prices[i]['BidPrice'] <= .00000002:
+            print(prices[i]['BidPrice'])
+      '''
+
+
+    #print(prices)
+    #print(type(prices))
+    #print(type(prices))
+
+    #cryptopia.filterResponse(prices)
+
+    #print(time.time() - start)
+
+    #print(cryptopia.getMarkets.__doc__)
+
 main()
