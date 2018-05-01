@@ -13,15 +13,10 @@ bitfinex = {
     'hourly_request_limit':0
 }
 bithumb = {
-<<<<<<< HEAD
     'apikey':'',
     'apisecret':'',
     'base_url':'',
     'hourly_request_limit':0
-=======
-    'apikey':'5010',
-    'apisecret':'0101'
->>>>>>> 499633687b41eb9b9271334864603d2e5cb8e98a
 }
 bitstamp = {
     'apikey':'',
@@ -126,14 +121,8 @@ poloniex = {
     'hourly_request_limit':0
 }
 yobit = {
-<<<<<<< HEAD
     'apikey':'',
     'apisecret':'',
     'base_url':'',
     'hourly_request_limit':0
 }
-=======
-    'apikey':'1010',
-    'apisecret':'0101'
-}
->>>>>>> 499633687b41eb9b9271334864603d2e5cb8e98a

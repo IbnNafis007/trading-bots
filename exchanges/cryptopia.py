@@ -67,74 +67,22 @@ class Cryptopia(Exchange):
     # Private API
     def getBalance(self):
         """Returns all balances or a specific currency balance"""
-        # 1. Sender asks receiver for public key
-        # 2. hash
-        # 3. use private key to generate signature
-        # 4. attach signature to message
-        # 5. encryption of everything
-        #'https://www.cryptopia.co.nz/api/GetBalance'
-        '''
-        url = 'https://www.cryptopia.co.nz/api/GetBalance'
-        nonce = str(int(time.time()))
-        #print(nonce)
-        post_data = json.dumps(None)
-        m = hashlib.md5()
-        #m.encode('utf-8').hexdigest()
-        #m.update(post_data)
-        requestContentBase64String = base64.b64encode(m.digest())
-        print(type(requestContentBase64String))
-        signature = self.__apikey + 'POST' + url + nonce + str(requestContentBase64String)
-        hmacsignature = base64.b64encode(str(hmac.new(base64.b64decode(self.__apisecret), signature, hashlib.sha256).digest(),'utf-8'))
-        header_value = "amx " + self.__apikey + ":" + hmacsignature + ":" + nonce
+        request_parameters = {}
+        url = self.__base_url + "getbalance"
+        nonce = str(time.time())
+        post_data = json.dumps(request_parameters)
+        #m = hashlib.md5()
+        #m.update(bytearray(post_data,'utf-8'))
+        md5 = hashlib.md5()
+        jsonparams = post_data.encode('utf-8')
+        md5.update(jsonparams)
+        rcb64 = base64.b64encode(md5.digest()).decode('utf-8')
+        signature = self.__apikey + "POST" + urllib.parse.quote_plus(url).lower() + nonce + rcb64
+        hmacsignature = base64.b64encode(hmac.new(base64.b64decode(self.__apisecret), signature.encode('utf-8'), hashlib.sha256).digest())
+        header_value = "amx " + self.__apikey + ":" + hmacsignature.decode('utf-8') + ":" + nonce
         headers = {'Authorization': header_value, 'Content-Type': 'application/json; charset=utf-8'}
-        r = requests.post(url, data=post_data, headers=headers) # data=post_data, headers '''
-        req = {}
-        #API_KEY + "POST" + URI + NONCE + HASHED_POST_PARAMS
-        url = "https://www.cryptopia.co.nz/Api/GetBalance"
-        nonce = str(int(time.time()))
-        post_data = json.dumps(req)
-        print("post_data: "+ post_data)
-        m = hashlib.md5()
-        #print("m: "+ str(m))
-        m.update(bytes(post_data,'utf-8'))
-        #m.update(post_data,'utf-8')
-        requestContentBase64String = base64.b64encode(m.digest()).decode('utf-8')
-
-        #print("requestContentBase64String: "+ requestContentBase64String)
-
-        x = urllib.parse.quote_plus(url)#.lower()
-
-        #print("[+] quote_plus: " + x)
-
-        signature = self.__apikey + "POST" + url + nonce + requestContentBase64String
-
-        print("[+] Signature: "+ signature)
-
-        ascii_apisecret = self.__apisecret.encode('ascii','ignore')
-        #print("[+] ASCII apisecret: "+ str(ascii_apisecret))
-
-        decoded_apisecret = base64.b64decode(ascii_apisecret)
-        #print("[+] decoded_apisecret: "+ str(decoded_apisecret))
-
-        #myHMAC = hmac.new(decoded_apisecret, bytearray(signature,'utf8'), hashlib.sha256)
-        myHMAC = hmac.new(bytes(self.__apisecret,'utf-8'), bytearray(signature,'utf-8'), hashlib.sha256)
-
-        myDigest = myHMAC.digest()
-
-        hmacsignature = base64.b64encode(myDigest)
-
-        #print("[+] hmacsignature: " + str(hmacsignature))
-
-        header_value = "amx " + self.__apikey + ":" + str(hmacsignature) + ":" + nonce
-
-        #print("[+] header_value: "+ header_value)
-
-        headers = {'Authorization': header_value, 'Content-Type': 'application/json; charset=utf-8'}
-
         response = requests.post(url, data=post_data, headers=headers).text
-        #response = r.text
-        #print('[+] Response' + response)
-        #print(r)
+
         return response
 
     def getOpenOrders(self):
@@ -165,82 +113,20 @@ class Cryptopia(Exchange):
         pass
 
     # Helper Methods
+    def secure_headers(self, url, post_data):
+        """ Creates secure header for cryptopia private api. """
+        nonce = str(time.time())
+        md5 = hashlib.md5()
+        jsonparams = post_data.encode('utf-8')
+        md5.update(jsonparams)
+        rcb64 = base64.b64encode(md5.digest()).decode('utf-8')
+
+        signature = self.key + "POST" + urllib.parse.quote_plus(url).lower() + nonce + rcb64
+        hmacsignature = base64.b64encode(hmac.new(base64.b64decode(self.secret),
+                                                  signature.encode('utf-8'),
+                                                  hashlib.sha256).digest())
+        header_value = "amx " + self.key + ":" + hmacsignature.decode('utf-8') + ":" + nonce
+        return {'Authorization': header_value, 'Content-Type': 'application/json; charset=utf-8'}
+
     def filter_response(self, response):
         return response['Data']
-
-
-
-
-    '''
-        def getBalance(self):
-        Returns all balances or a specific currency balance"""
-        # 1. Sender asks receiver for public key
-        # 2. hash
-        # 3. use private key to generate signature
-        # 4. attach signature to message
-        # 5. encryption of everything
-        #'https://www.cryptopia.co.nz/api/GetBalance'
-        
-        url = 'https://www.cryptopia.co.nz/api/GetBalance'
-        nonce = str(int(time.time()))
-        #print(nonce)
-        post_data = json.dumps(None)
-        m = hashlib.md5()
-        #m.encode('utf-8').hexdigest()
-        #m.update(post_data)
-        requestContentBase64String = base64.b64encode(m.digest())
-        print(type(requestContentBase64String))
-        signature = self.__apikey + 'POST' + url + nonce + str(requestContentBase64String)
-        hmacsignature = base64.b64encode(str(hmac.new(base64.b64decode(self.__apisecret), signature, hashlib.sha256).digest(),'utf-8'))
-        header_value = "amx " + self.__apikey + ":" + hmacsignature + ":" + nonce
-        headers = {'Authorization': header_value, 'Content-Type': 'application/json; charset=utf-8'}
-        r = requests.post(url, data=post_data, headers=headers) # data=post_data, headers 
-        req = {}
-        #API_KEY + "POST" + URI + NONCE + HASHED_POST_PARAMS
-        url = "https://www.cryptopia.co.nz/Api/GetBalance"
-        nonce = str(int(time.time()))
-        post_data = json.dumps(req)
-        print("post_data: "+ post_data)
-        m = hashlib.md5()
-        #print("m: "+ str(m))
-        m.update(bytes(post_data,'utf-8'))
-        #m.update(post_data,'utf-8')
-        requestContentBase64String = base64.b64encode(m.digest()).decode('utf-8')
-
-        #print("requestContentBase64String: "+ requestContentBase64String)
-
-        x = urllib.parse.quote_plus(url)#.lower()
-
-        #print("[+] quote_plus: " + x)
-
-        signature = self.__apikey + "POST" + url + nonce + requestContentBase64String
-
-        print("[+] Signature: "+ signature)
-
-        ascii_apisecret = self.__apisecret.encode('ascii','ignore')
-        #print("[+] ASCII apisecret: "+ str(ascii_apisecret))
-
-        decoded_apisecret = base64.b64decode(ascii_apisecret)
-        #print("[+] decoded_apisecret: "+ str(decoded_apisecret))
-
-        #myHMAC = hmac.new(decoded_apisecret, bytearray(signature,'utf8'), hashlib.sha256)
-        myHMAC = hmac.new(bytes(self.__apisecret,'utf-8'), bytearray(signature,'utf-8'), hashlib.sha256)
-
-        myDigest = myHMAC.digest()
-
-        hmacsignature = base64.b64encode(myDigest)
-
-        #print("[+] hmacsignature: " + str(hmacsignature))
-
-        header_value = "amx " + self.__apikey + ":" + str(hmacsignature) + ":" + nonce
-
-        #print("[+] header_value: "+ header_value)
-
-        headers = {'Authorization': header_value, 'Content-Type': 'application/json; charset=utf-8'}
-
-        response = requests.post(url, data=post_data, headers=headers).text
-        #response = r.text
-        #print('[+] Response' + response)
-        #print(r)
-        return response
-'''

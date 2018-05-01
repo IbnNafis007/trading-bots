@@ -5,7 +5,8 @@ import sys
 import json
 import time
 
-sys.path.append('../../') # To keep file structure
+#sys.path.append('../../') # To keep file structure
+sys.path += '../../'
 
 from exchanges.cryptopia import Cryptopia
 
@@ -20,6 +21,7 @@ def main():
 
 
     print(cryptopia.getBalance())
+    #print(cryptopia.test())
 
     #post is
 
